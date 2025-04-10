@@ -1,4 +1,9 @@
 .env
 __pycache__
-img/
-text/
+img/*
+text/*
+*.png
+*.pdf
+output.pdf
+output.tex
+
