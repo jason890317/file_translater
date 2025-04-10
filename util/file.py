@@ -1,5 +1,7 @@
 from pdf2image import convert_from_path
 import os
+import base64
+import re
 
 def convert_pdf_to_images(pdf_path, output_dir):
     # Optional: Specify the output directory for images
@@ -87,3 +89,37 @@ def convert_pdf_to_text(pdf_path, output_dir=None):
         print(f"Saved text with positions to {output_file}")
     
     return result
+
+def encode_image_to_base64(image_path):
+    """
+    Encode an image file to base64 string
+    """
+    with open(image_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode('utf-8')
+
+def load_images_from_directory(directory):
+    """
+    Load all images from a directory
+    Returns a list of image paths
+    """
+    image_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp']
+    image_paths = []
+    
+    for file in os.listdir(directory):
+        if any(file.lower().endswith(ext) for ext in image_extensions):
+            image_paths.append(os.path.join(directory, file))
+    
+    return sorted(image_paths)
+
+def get_latex_from_response_text(response):
+
+    # Try to extract content between ```latex and ``` markers
+    latex_pattern = r"```latex([\s\S]*?)```"
+    match = re.search(latex_pattern, response)
+    
+    if match:
+        # Return the content inside the backticks
+        return match.group(1)
+    
+    # If no triple backticks found at all, return the original text
+    return response
