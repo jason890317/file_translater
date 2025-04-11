@@ -5,7 +5,7 @@ import os
 
 if __name__ == "__main__":
     # Input file path
-    file_path = "/Users/jasoncyhsu/Downloads/University of Michigan Mail - Action required_ Submit your vaccination documentation now.pdf"
+    file_path = "/Users/jasoncyhsu/Downloads/MDS Program Guide updated2.pdf"
     path = Path(file_path)
     stem = path.stem
     

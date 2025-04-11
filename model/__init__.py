@@ -94,7 +94,7 @@ Content Flow: While replicating structure, use environments like longtable that 
 
 LaTeX Template (Mandatory Structure):
 
-\\documentclass[12pt, a4paper]{article}
+\\documentclass[a4paper]{article}
 \\usepackage{xeCJK}
 \\setCJKmainfont{Noto Serif CJK TC}
 \\usepackage[margin=1in]{geometry} 
