@@ -1,19 +1,41 @@
 from model import gemini_prompt
-from util import convert_pdf_to_images, convert_pdf_to_text,get_latex_from_response_text,convert_latex_to_pdf
+from util import convert_pdf_to_images, convert_pdf_to_text, get_latex_from_response_text, convert_latex_to_pdf
 from pathlib import Path
+import os
 
 if __name__ == "__main__":
-    file_path="/Users/jasoncyhsu/Downloads/MDS Program Guide updated2.pdf"
+    # Input file path
+    file_path = "/Users/jasoncyhsu/Downloads/University of Michigan Mail - Action required_ Submit your vaccination documentation now.pdf"
     path = Path(file_path)
-    stem = path.stem  # 'MDS Program Guide updated2'
-    # convert_pdf_to_images(file_path, "img/")
-    # prompt=convert_pdf_to_text(file_path, "text/")
-    # gemini_result=gemini_prompt(str(prompt),"img/")
+    stem = path.stem
+    
+    # Create output directory paths
+    img_path = Path("img") / stem
+    text_path = Path("text") / stem
+    latex_path = Path("latex") / stem
+    output_pdf_path = Path("translated_pdf") / stem
+    
+    # Create output file paths - use the existing file name pattern
+    latex_file_path = latex_path / f"{stem}.tex"
+    output_pdf_file_path = output_pdf_path / f"{stem}_translated.pdf"
+    
+    # Create directories
+    os.makedirs(img_path, exist_ok=True)
+    os.makedirs(text_path, exist_ok=True)
+    os.makedirs(latex_path, exist_ok=True)
+    os.makedirs(output_pdf_path, exist_ok=True)
 
-    # latex=get_latex_from_response_text(gemini_result)
+    # Process PDF
+    convert_pdf_to_images(file_path, img_path)
+    prompt = convert_pdf_to_text(file_path, text_path)
+
+    # Generate LaTeX from Gemini
+    gemini_result = gemini_prompt(str(prompt), img_path)
+    latex = get_latex_from_response_text(gemini_result)
     
-    # with open("output.tex", "w", encoding="utf-8") as f:
-    #     f.write(latex)
+    # Save LaTeX file
+    with open(latex_file_path, "w", encoding="utf-8") as f:
+        f.write(latex)
     
-    output_pdf_name = f"{stem}_translated.pdf"
-    convert_latex_to_pdf("output.tex", output_pdf_name)
+    # Convert LaTeX to PDF
+    convert_latex_to_pdf(latex_file_path, output_pdf_file_path)

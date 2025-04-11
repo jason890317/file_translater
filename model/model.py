@@ -37,3 +37,4 @@ def gemini_prompt(content, img_dir,model="gemini-2.5-pro-exp-03-25"):
             )
     )
     return response.text
+

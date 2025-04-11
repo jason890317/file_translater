@@ -6,4 +6,7 @@ text
 *.pdf
 output.pdf
 output.tex
+translated_pdf
+latex
+.DS_Store
 
