@@ -72,7 +72,7 @@ file_translater/
 ├── util/
 │   ├── __init__.py     # Utility functions
 │   ├── latex.py        # LaTeX to PDF conversion
-│   └── pdf.py          # PDF processing utilities
+│   └── file.py          # PDF processing utilities
 ├── file_translator.py  # Main execution script
 └── .env                # Environment variables
 ```
