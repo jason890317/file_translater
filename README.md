@@ -46,14 +46,14 @@ A specialized tool that transforms English PDF documents into Traditional Chines
 
 ## Usage
 
-1. Update the file path in `run.py` to point to your PDF:
+1. Update the file path in `file_translator.py` to point to your PDF:
    ```python
    file_path = "/path/to/your/document.pdf"
    ```
 
 2. Run the translator:
    ```bash
-   python -m file_translater.run
+   python file_translator.py
    ```
 
 3. The process will:
@@ -73,7 +73,7 @@ file_translater/
 │   ├── __init__.py     # Utility functions
 │   ├── latex.py        # LaTeX to PDF conversion
 │   └── pdf.py          # PDF processing utilities
-├── run.py              # Main execution script
+├── file_translator.py  # Main execution script
 └── .env                # Environment variables
 ```
 
