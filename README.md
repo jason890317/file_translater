@@ -1,6 +1,6 @@
-# PDF to LaTeX Translator
+# PDF Translator from English to Traditional Chinese
 
-A powerful tool that converts PDF documents into LaTeX format using Google's Gemini AI model. This application extracts text and images from PDFs and generates corresponding LaTeX code that preserves the document's structure and formatting.
+A specialized tool that transforms English PDF documents into Traditional Chinese using Google's Gemini AI. This application intelligently processes PDFs by extracting both textual content and visual elements, then generates high-quality LaTeX code that maintains the original document's layout while providing accurate Chinese translations.
 
 ## Features
 
